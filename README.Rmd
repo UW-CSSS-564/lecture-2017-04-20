@@ -1,0 +1,26 @@
+---
+title: "Lecture 2017-04-20"
+author: "Jeffrey Arnold"
+date: "4/20/2017"
+output: html_document
+---
+
+```{r}
+library("rstan")
+library("loo")
+```
+
+```{r}
+data("Duncan")
+mod1_data <- list(
+  y = Duncan$prestige,
+  n = nrow(Duncan)
+)
+X <- model.matrix(prestige ~ type + income + education, data = Duncan)
+mod1_data$X <- X
+mod1_data$k <- ncol(X)
+mod1_data$b_loc <- 0
+mod1_data$b_scale <- 1000
+mod1_data$sigma_scale <- 50
+```
+
