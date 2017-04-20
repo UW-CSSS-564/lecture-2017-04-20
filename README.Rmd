@@ -22,5 +22,24 @@ mod1_data$k <- ncol(X)
 mod1_data$b_loc <- 0
 mod1_data$b_scale <- 1000
 mod1_data$sigma_scale <- 50
+
+mod1_fit <- sampling(mod1)
+```
+
+# Example of 
+
+Western (1995) Table 2. Least Squares and Robust Regression Analysis of the Determinants of Union Density in 20 Advanced Capitalist Countries.
+
+Model of Union Density 
+
+```{r}
+library("readr")
+unionization <- read_tsv(file = "data/western1995/unionization.tsv")
+unionization
+lm(union_density ~ left_government + labor_force_size + econ_conc,
+   data = unionization)
+X <- model.matrix(union_density ~ left_government + labor_force_size + econ_conc, data = unionization)
+
+
 ```
 
